@@ -5,7 +5,7 @@
 int queue[MAX];
 int front = -1, rear = -1;
 
-void insert() {
+void enque() {
     int item;
     if (rear == MAX - 1) {
         printf("\nQueue Overflow! Cannot insert more elements.\n");
@@ -20,7 +20,7 @@ void insert() {
     printf("Inserted %d into the queue.\n", item);
 }
 
-void delete() {
+void deque() {
     if (front == -1 || front > rear) {
         printf("\nQueue Underflow! No elements to delete.\n");
         return;
@@ -57,10 +57,10 @@ int main() {
 
         switch (choice) {
             case 1:
-                insert();
+                enque();
                 break;
             case 2:
-                delete();
+                deque();
                 break;
             case 3:
                 display();
@@ -73,3 +73,4 @@ int main() {
     }
     return 0;
 }
+
