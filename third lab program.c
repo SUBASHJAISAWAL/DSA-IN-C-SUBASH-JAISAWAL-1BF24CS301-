@@ -1,76 +1,72 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define MAX 5
+#include<stdio.h>
+#include<stdlib.h>
+#define N 3
 
-int queue[MAX];
-int front = -1, rear = -1;
+int queue[N];
+int front=-1, rear=-1;
 
-void enque() {
+void enque()
+{
     int item;
-    if (rear == MAX - 1) {
-        printf("\nQueue Overflow! Cannot insert more elements.\n");
+    if(rear==N-1){
+        printf("Overflow!, cannot insert the element\n");
         return;
     }
-    printf("Enter the element to insert: ");
-    scanf("%d", &item);
-    if (front == -1)
-        front = 0;
-    rear++;
-    queue[rear] = item;
-    printf("Inserted %d into the queue.\n", item);
+    printf("enter the item to insert:\n");
+    scanf("%d",&item);
+    if(front==-1)
+        front=0;
+    rear ++;
+    queue [rear]=item;
+    printf("inserted %d into the queue",item);
 }
-
-void deque() {
-    if (front == -1 || front > rear) {
-        printf("\nQueue Underflow! No elements to delete.\n");
+void deque()
+{
+    if(front==-1 || front>rear){
+        printf("Underflow!,empty queue cannot delete\n");
         return;
     }
-    printf("Deleted element: %d\n", queue[front]);
-    front++;
-    if (front > rear) {
-        front = rear = -1;  // Reset queue when empty
+    printf("Deleted %d from the queue",queue[front]);
+    front ++;
+    if(front > rear)
+        front=rear=-1;
+}
+void display()
+{
+    if(front==-1)
+    {
+        printf("Empty queue! nothing to display");
     }
+    printf("\nThe queue elements are:");
+    for(int i=front; i<=rear; i++)
+        printf("%d",queue[i]);
 }
 
-void display() {
-    if (front == -1) {
-        printf("\nQueue is Empty!\n");
-        return;
-    }
-    printf("\nQueue elements are: ");
-    for (int i = front; i <= rear; i++)
-        printf("%d ", queue[i]);
-    printf("\n");
-}
-
-// Main function
-int main() {
+int main()
+{
     int choice;
-    while (1) {
-        printf("\n--- Queue Operations ---");
-        printf("\n1. Insert");
-        printf("\n2. Delete");
-        printf("\n3. Display");
-        printf("\n4. Exit");
-        printf("\nEnter your choice: ");
-        scanf("%d", &choice);
-
-        switch (choice) {
-            case 1:
-                enque();
-                break;
-            case 2:
-                deque();
-                break;
-            case 3:
-                display();
-                break;
-            case 4:
-                exit(0);
-            default:
-                printf("\nInvalid choice! Please try again.\n");
+    while(1){
+    printf("--- queue operations ---");
+    printf("\n 1. Insert");
+    printf("\n 2. Delete");
+    printf("\n 3. Display");
+    printf("\n 4. Exit\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    switch(choice){
+    case 1:
+        enque();
+        break;
+    case 2:
+        deque();
+        break;
+    case 3:
+        display();
+        break;
+    case 4:
+        exit(0);
+    default: printf("Invalid input! try again");
         }
+        printf("\n");
     }
-    return 0;
 }
-
